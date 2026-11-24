@@ -1337,6 +1337,9 @@
         window.addEventListener('DOMContentLoaded', () => {
             updateKPIs();
             fetchSheetData(false);
+            setInterval(() => {
+                if (!isSampleMode) silentSyncData();
+            }, 20000);
         });
     </script>
 
