@@ -103,11 +103,6 @@
                         <i id="refreshIcon" class="fa-solid fa-rotate text-sky-200"></i>
                         <span class="hidden sm:inline">Làm mới</span>
                     </button>
-                    <button onclick="openMyBookingsModal()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs sm:text-sm font-medium transition active:scale-95">
-                        <i class="fa-regular fa-calendar-check text-sky-200"></i>
-                        <span class="hidden md:inline">Lịch xem phòng</span>
-                        <span id="bookingCountBadge" class="bg-sky-400 text-blue-950 font-bold text-[11px] px-1.5 py-0.5 rounded-full leading-none">0</span>
-                    </button>
                     <button onclick="openAddHouseModal()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white text-xs sm:text-sm font-semibold shadow-md shadow-emerald-900/20 transition active:scale-95">
                         <i class="fa-solid fa-plus"></i>
                         <span>Đóng góp nhà trọ</span>
@@ -159,7 +154,7 @@
     </header>
 
     <!-- ==================== MAIN CONTENT ==================== -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 pb-14">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 pb-10">
 
         <!-- ==================== FLOATING SEARCH & FILTER BAR ==================== -->
         <section class="-mt-10 sm:-mt-12 bg-white rounded-2xl shadow-md border border-slate-200/80 p-4 sm:p-5 mb-6 relative z-20">
@@ -274,7 +269,7 @@
             </div>
             <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-2">Chưa có nhà trọ nào được duyệt trên hệ thống</h3>
             <p class="text-sm text-slate-500 mb-6 leading-relaxed">
-            Danh sách nhà trọ đang được cập nhật. Hãy là người đầu tiên đóng góp thông tin phòng trọ uy tín hoặc xem trước bản mẫu minh họa bên dưới.
+                Danh sách nhà trọ đang được cập nhật. Hãy là người đầu tiên đóng góp thông tin phòng trọ uy tín hoặc xem trước bản mẫu minh họa bên dưới.
             </p>
             <div class="flex flex-wrap items-center justify-center gap-3">
                 <button onclick="openAddHouseModal()" class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl shadow-sm transition active:scale-95">
@@ -299,10 +294,7 @@
         </div>
     </main>
 
-    <!-- ==================== FOOTER WITH LEGAL DISCLAIMER ==================== -->
-    
-
-    <!-- ==================== MODAL CHI TIẾT NHÀ TRỌ (3 TABS) ==================== -->
+    <!-- ==================== MODAL CHI TIẾT NHÀ TRỌ (2 TABS) ==================== -->
     <div id="detailModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
         <div class="bg-white w-full max-w-3xl max-h-[92vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden modal-enter">
             <!-- Header Modal -->
@@ -330,9 +322,6 @@
                 </button>
                 <button id="tabBtn-reviews" onclick="switchDetailTab('reviews')" class="px-3.5 py-3 text-xs sm:text-sm font-semibold border-b-2 whitespace-nowrap transition flex items-center gap-2">
                     <i class="fa-solid fa-star"></i> Chủ trọ & Review <span id="tabReviewCount" class="text-[11px] px-1.5 py-0.5 rounded-full bg-slate-200 text-slate-700">0</span>
-                </button>
-                <button id="tabBtn-booking" onclick="switchDetailTab('booking')" class="px-3.5 py-3 text-xs sm:text-sm font-semibold border-b-2 whitespace-nowrap transition flex items-center gap-2">
-                    <i class="fa-regular fa-calendar-check"></i> Đặt lịch xem phòng
                 </button>
             </div>
 
@@ -457,66 +446,6 @@
                         <div id="reviewList" class="space-y-3"></div>
                     </div>
                 </div>
-
-                <!-- TAB 3: ĐẶT LỊCH XEM PHÒNG -->
-                <div id="tabContent-booking" class="hidden max-w-xl mx-auto">
-                    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-5 flex items-start gap-3">
-                        <i class="fa-solid fa-circle-info text-blue-600 mt-0.5"></i>
-                        <div class="text-xs sm:text-sm text-slate-700">
-                            Lưu lịch hẹn xem phòng cá nhân trên thiết bị của bạn để dễ theo dõi và chủ động gọi trước cho chủ trọ.
-                        </div>
-                    </div>
-
-                    <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                            <div>
-                                <label for="bookingFullName" class="block text-xs font-semibold text-slate-600 mb-1">Họ và tên <span class="text-rose-500">*</span></label>
-                                <input type="text" id="bookingFullName" required placeholder="Nguyễn Văn A" class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500">
-                            </div>
-                            <div>
-                                <label for="bookingPhone" class="block text-xs font-semibold text-slate-600 mb-1">Số điện thoại / Zalo <span class="text-rose-500">*</span></label>
-                                <input type="tel" id="bookingPhone" required placeholder="09xx xxx xxx" class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500">
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                            <div>
-                                <label for="bookingDate" class="block text-xs font-semibold text-slate-600 mb-1">Ngày dự kiến xem <span class="text-rose-500">*</span></label>
-                                <input type="date" id="bookingDate" required class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500">
-                            </div>
-                            <div>
-                                <label for="bookingTime" class="block text-xs font-semibold text-slate-600 mb-1">Khung giờ <span class="text-rose-500">*</span></label>
-                                <select id="bookingTime" required class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500">
-                                    <option value="08:30 - 10:30 (Sáng)">08:30 - 10:30 (Sáng)</option>
-                                    <option value="10:30 - 12:00 (Trưa)">10:30 - 12:00 (Trưa)</option>
-                                    <option value="14:00 - 16:30 (Chiều)">14:00 - 16:30 (Chiều)</option>
-                                    <option value="17:30 - 20:00 (Tối)">17:30 - 20:00 (Tối)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="bookingNote" class="block text-xs font-semibold text-slate-600 mb-1">Ghi chú thêm</label>
-                            <input type="text" id="bookingNote" placeholder="VD: Ở 2 người, có 2 xe máy..." class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500">
-                        </div>
-
-                        <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl shadow-md transition active:scale-[0.99] flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-calendar-check"></i> Xác nhận đặt lịch xem phòng
-                        </button>
-                    </form>
-
-                    <!-- Confirmation Box -->
-                    <div id="bookingSuccessBox" class="hidden mt-5 bg-emerald-50 border border-emerald-200 rounded-2xl p-5 text-center">
-                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-check"></i>
-                        </div>
-                        <h4 class="text-base font-bold text-emerald-900 mb-1">Đã lưu lịch xem phòng!</h4>
-                        <p id="bookingSuccessText" class="text-xs sm:text-sm text-emerald-800 mb-3"></p>
-                        <button onclick="resetBookingForm()" class="px-4 py-2 bg-white border border-emerald-300 text-emerald-700 text-xs font-semibold rounded-xl hover:bg-emerald-100 transition">
-                            Đặt thêm lịch khác
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -594,28 +523,12 @@
         </div>
     </div>
 
-    <!-- ==================== MODAL LỊCH XEM PHÒNG CỦA TÔI ==================== -->
-    <div id="myBookingsModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
-        <div class="bg-white w-full max-w-xl max-h-[85vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden modal-enter">
-            <div class="bg-slate-800 text-white px-5 py-4 flex items-center justify-between shrink-0">
-                <h3 class="text-base sm:text-lg font-bold flex items-center gap-2">
-                    <i class="fa-regular fa-calendar-check text-sky-400"></i> Lịch xem phòng của bạn
-                </h3>
-                <button onclick="closeMyBookingsModal()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div id="myBookingsList" class="p-4 sm:p-5 overflow-y-auto custom-scrollbar space-y-3 flex-1"></div>
-        </div>
-    </div>
-
     <!-- ==================== JAVASCRIPT LOGIC & GOOGLE SHEETS API ==================== -->
     <script>
         // =========================================================================
         // 1. CẤU HÌNH BACKEND GOOGLE SHEETS (APPS SCRIPT)
         // =========================================================================
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoE4UX3vGgb40NrghmF8mB100WaBd3PSLwuouBhy98m6V86xJ-vYgupDCFQdb2tC2X/exec";
-        const STORAGE_KEY_BOOKINGS = "trocheck_hcm_bookings_v2";
 
         // Dữ liệu mẫu minh họa (chỉ dùng khi người dùng bấm "Xem dữ liệu mẫu minh họa")
         const SAMPLE_DATA = {
@@ -629,7 +542,7 @@
                     sdt: "0908 412 889",
                     gia: 3.4,
                     phongtrong: 3,
-                    trangthai: "DaDuyet"
+                    trangthai: 1
                 },
                 {
                     id: "SAMPLE_2",
@@ -640,7 +553,7 @@
                     sdt: "0937 556 201",
                     gia: 2.6,
                     phongtrong: 4,
-                    trangthai: "DaDuyet"
+                    trangthai: 1
                 },
                 {
                     id: "SAMPLE_3",
@@ -651,7 +564,7 @@
                     sdt: "0902 661 452",
                     gia: 4.5,
                     phongtrong: 0,
-                    trangthai: "DaDuyet"
+                    trangthai: 1
                 }
             ],
             reviews: [
@@ -661,7 +574,7 @@
                     sao: 5,
                     noidung: "Cô Tâm rất dễ tính, điện nước chụp đồng hồ rõ ràng cuối tháng, hoàn cọc đúng hẹn.",
                     ngay: "14/11/2026",
-                    trangthai: "DaDuyet"
+                    trangthai: 1
                 },
                 {
                     id_nhatro: "SAMPLE_2",
@@ -669,7 +582,7 @@
                     sao: 5,
                     noidung: "Phòng có gác rộng rãi, chú Dũng không thu phí gửi xe nên rất tiết kiệm cho sinh viên.",
                     ngay: "19/11/2026",
-                    trangthai: "DaDuyet"
+                    trangthai: 1
                 }
             ]
         };
@@ -680,7 +593,6 @@
         let liveHouses = [];
         let liveReviews = [];
         let isSampleMode = false;
-        let bookings = [];
         let currentHouseId = null;
         let currentReviewRating = 5;
 
@@ -704,7 +616,6 @@
                 .replace(/'/g, '&#039;');
         }
 
-        // Trích xuất giá trị số (đơn vị: triệu) để lọc và sắp xếp
         function parsePriceValue(gia) {
             if (typeof gia === 'number' && !isNaN(gia)) {
                 return gia >= 100000 ? gia / 1000000 : gia;
@@ -717,7 +628,6 @@
             return num >= 100000 ? num / 1000000 : num;
         }
 
-        // Hiển thị giá đẹp mắt bất kể Sheet lưu số (3.5) hay chuỗi ("3.5 triệu")
         function formatPriceDisplay(gia) {
             if (gia === null || gia === undefined || String(gia).trim() === '') return 'Liên hệ';
             const raw = String(gia).trim();
@@ -876,7 +786,6 @@
             document.getElementById('kpiTotalHouses').textContent = houses.length;
             document.getElementById('kpiAvailableRooms').textContent = totalRooms;
             document.getElementById('kpiTotalReviews').textContent = reviews.length;
-            document.getElementById('bookingCountBadge').textContent = bookings.length;
         }
 
         function clearSearch() {
@@ -899,7 +808,6 @@
             const sheetEmptyEl = document.getElementById('sheetEmptyState');
             const filterEmptyEl = document.getElementById('filterEmptyState');
 
-            // Nếu Sheet thật chưa có dữ liệu nào được duyệt
             if (houses.length === 0 && !isSampleMode) {
                 gridEl.classList.add('hidden');
                 filterEmptyEl.classList.add('hidden');
@@ -1040,7 +948,7 @@
         }
 
         // =========================================================================
-        // 6. MODAL CHI TIẾT NHÀ TRỌ (3 TABS)
+        // 6. MODAL CHI TIẾT NHÀ TRỌ (2 TABS)
         // =========================================================================
         function openDetailModal(houseId, initialTab = 'info') {
             currentHouseId = houseId;
@@ -1065,7 +973,6 @@
 
             renderTabInfo(house);
             renderTabReviews(house);
-            renderTabBooking(house);
             switchDetailTab(initialTab);
 
             document.getElementById('detailModal').classList.remove('hidden');
@@ -1079,7 +986,7 @@
         }
 
         function switchDetailTab(tabName) {
-            ['info', 'reviews', 'booking'].forEach(t => {
+            ['info', 'reviews'].forEach(t => {
                 const btn = document.getElementById(`tabBtn-${t}`);
                 const content = document.getElementById(`tabContent-${t}`);
                 if (t === tabName) {
@@ -1229,7 +1136,7 @@
                 document.getElementById('reviewForm').reset();
                 currentReviewRating = 5;
                 renderStarPicker();
-                showToast('Đã gửi đánh giá!.', 'success');
+                showToast('Đã gửi đánh giá!', 'success');
             } catch (err) {
                 console.error('Lỗi gửi review:', err);
                 showToast('Có lỗi khi gửi đánh giá. Vui lòng thử lại.', 'error');
@@ -1237,67 +1144,6 @@
                 btn.disabled = false;
                 btn.innerHTML = originalHtml;
             }
-        }
-
-        // --- TAB 3: ĐẶT LỊCH XEM PHÒNG (LOCALSTORAGE) ---
-        function loadBookings() {
-            try {
-                const raw = localStorage.getItem(STORAGE_KEY_BOOKINGS);
-                bookings = raw ? JSON.parse(raw) : [];
-            } catch (e) {
-                bookings = [];
-            }
-        }
-
-        function saveBookings() {
-            try {
-                localStorage.setItem(STORAGE_KEY_BOOKINGS, JSON.stringify(bookings));
-            } catch (e) {}
-        }
-
-        function renderTabBooking(house) {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            document.getElementById('bookingDate').value = tomorrow.toISOString().split('T')[0];
-            document.getElementById('bookingSuccessBox').classList.add('hidden');
-            document.getElementById('bookingForm').classList.remove('hidden');
-        }
-
-        function submitBooking(event) {
-            event.preventDefault();
-            const house = getActiveHouses().find(h => String(h.id) === String(currentHouseId));
-            if (!house) return;
-
-            const booking = {
-                id: 'BK' + Math.floor(100000 + Math.random() * 900000),
-                houseName: house.ten,
-                address: house.diachi,
-                landlordName: house.chutro,
-                landlordPhone: house.sdt,
-                fullName: document.getElementById('bookingFullName').value.trim(),
-                phone: document.getElementById('bookingPhone').value.trim(),
-                date: document.getElementById('bookingDate').value,
-                time: document.getElementById('bookingTime').value,
-                note: document.getElementById('bookingNote').value.trim()
-            };
-
-            bookings.unshift(booking);
-            saveBookings();
-            updateKPIs();
-
-            document.getElementById('bookingForm').classList.add('hidden');
-            document.getElementById('bookingSuccessBox').classList.remove('hidden');
-            document.getElementById('bookingSuccessText').innerHTML = `
-                Mã lịch hẹn <strong>#${booking.id}</strong> tại <strong>${escapeHtml(house.ten)}</strong> vào ngày <strong>${escapeHtml(booking.date)}</strong> (${escapeHtml(booking.time)}).<br>
-                Bạn nhớ gọi trước cho chủ trọ <strong>${escapeHtml(house.chutro)} (${escapeHtml(house.sdt)})</strong> nhé!
-            `;
-            showToast('Đã lưu lịch xem phòng thành công!', 'success');
-        }
-
-        function resetBookingForm() {
-            document.getElementById('bookingForm').reset();
-            const house = getActiveHouses().find(h => String(h.id) === String(currentHouseId));
-            if (house) renderTabBooking(house);
         }
 
         // =========================================================================
@@ -1352,122 +1198,77 @@
             }
         }
 
-        // =========================================================================
-        // 8. MODAL LỊCH XEM PHÒNG CỦA TÔI
-        // =========================================================================
-        function openMyBookingsModal() {
-            const listEl = document.getElementById('myBookingsList');
-            if (bookings.length === 0) {
-                listEl.innerHTML = `
-                    <div class="text-center py-8 text-slate-500">
-                        <i class="fa-regular fa-calendar-xmark text-3xl text-slate-300 mb-2"></i>
-                        <p class="text-sm font-medium">Bạn chưa lưu lịch xem phòng nào.</p>
-                    </div>
-                `;
-            } else {
-                listEl.innerHTML = bookings.map((b, idx) => `
-                    <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70">
-                        <div class="flex items-center justify-between gap-2 mb-1.5">
-                            <span class="text-xs font-bold px-2 py-0.5 rounded-md bg-blue-100 text-blue-700">#${escapeHtml(b.id)}</span>
-                            <button onclick="removeBooking(${idx})" class="text-xs text-rose-600 hover:underline font-medium">Xóa lịch</button>
-                        </div>
-                        <div class="text-sm font-bold text-slate-900">${escapeHtml(b.houseName)}</div>
-                        <div class="text-xs text-slate-600 mt-1"><i class="fa-solid fa-location-dot text-blue-500 mr-1"></i>${escapeHtml(b.address)}</div>
-                        <div class="mt-2.5 pt-2.5 border-t border-slate-200/80 grid grid-cols-2 gap-2 text-xs text-slate-700">
-                            <div><i class="fa-regular fa-clock text-emerald-600 mr-1"></i>${escapeHtml(b.date)} (${escapeHtml(b.time)})</div>
-                            <div><i class="fa-solid fa-phone text-blue-600 mr-1"></i>${escapeHtml(b.landlordPhone)}</div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-            document.getElementById('myBookingsModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMyBookingsModal() {
-            document.getElementById('myBookingsModal').classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        function removeBooking(index) {
-            bookings.splice(index, 1);
-            saveBookings();
-            updateKPIs();
-            openMyBookingsModal();
-            showToast('Đã xóa lịch xem phòng.', 'info');
-        }
-
         // Đóng modal khi bấm ESC hoặc click nền tối
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
                 closeDetailModal();
                 closeAddHouseModal();
-                closeMyBookingsModal();
             }
         });
 
-        ['detailModal', 'addHouseModal', 'myBookingsModal'].forEach(id => {
+        ['detailModal', 'addHouseModal'].forEach(id => {
             document.getElementById(id).addEventListener('click', e => {
                 if (e.target.id === id) {
                     if (id === 'detailModal') closeDetailModal();
                     if (id === 'addHouseModal') closeAddHouseModal();
-                    if (id === 'myBookingsModal') closeMyBookingsModal();
                 }
             });
         });
 
         // =========================================================================
-        // 9. KHỞI CHẠY ỨNG DỤNG
+        // 8. KHỞI CHẠY ỨNG DỤNG
         // =========================================================================
         window.addEventListener('DOMContentLoaded', () => {
-            loadBookings();
             updateKPIs();
             fetchSheetData(false);
         });
     </script>
-   <!-- Chân trang gộp chuẩn SEO & Miễn trừ trách nhiệm -->
-<footer class="bg-white border-t border-slate-200 mt-12">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-      
-      <!-- Cột trái: Giới thiệu & Từ khóa SEO -->
-      <div class="md:col-span-7 space-y-3">
-        <h2 class="text-base font-bold text-slate-800">
-          TrọCheck HCM – Review Trọ & Tra Cứu Phòng Trống TP.HCM
-        </h2>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          Nền tảng cộng đồng giúp sinh viên và người đi làm dễ dàng <strong>tìm phòng trọ trống</strong>, 
-          xem <strong>review trọ thực tế</strong> về giá điện nước, an ninh, tiện ích và nhà trọ trước khi đặt cọc.
-        </p>
-        <div class="flex flex-wrap gap-1.5 pt-1">
-          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">TP. Thủ Đức</span>
-          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Làng Đại học</span>
-          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Bình Thạnh</span>
-          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Gò Vấp</span>
-          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Quận 10</span>
-          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Quận 7</span>
-          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Tân Bình</span>
-          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Phú Nhuận</span>
+
+    <!-- Chân trang gộp chuẩn SEO & Miễn trừ trách nhiệm -->
+    <footer class="bg-white border-t border-slate-200 mt-4">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+          <!-- Cột trái: Giới thiệu & Từ khóa SEO -->
+          <div class="md:col-span-7 space-y-3">
+            <h2 class="text-base font-bold text-slate-800">
+              TrọCheck HCM – Review Trọ & Tra Cứu Phòng Trống TP.HCM
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Nền tảng cộng đồng giúp sinh viên và người đi làm dễ dàng <strong>tìm phòng trọ trống</strong>,
+              xem <strong>review trọ thực tế</strong> về giá điện nước, an ninh, tiện ích và nhà trọ trước khi đặt cọc.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">TP. Thủ Đức</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Làng Đại học</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Bình Thạnh</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Gò Vấp</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Quận 10</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Quận 7</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Tân Bình</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Phú Nhuận</span>
+            </div>
+          </div>
+
+          <!-- Cột phải: Khung Miễn trừ trách nhiệm -->
+          <div class="md:col-span-5 bg-slate-50 border border-slate-200/70 rounded-xl p-4">
+            <div class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 text-blue-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"/>
+              </svg>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                <strong class="text-slate-800">Miễn trừ trách nhiệm:</strong> Thông tin phòng trống và đánh giá nhà trọ trên TrọCheck HCM mang tính chất tham khảo từ cộng đồng. Người thuê vui lòng kiểm tra thực tế và hợp đồng trước khi đặt cọc.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Dòng bản quyền -->
+        <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-400 text-center sm:text-left">
+          © 2026 TrọCheck HCM. Dự án cộng đồng hỗ trợ tìm trọ an toàn tại TP.HCM.
         </div>
       </div>
-
-      <!-- Cột phải: Khung Miễn trừ trách nhiệm -->
-      <div class="md:col-span-5 bg-slate-50 border border-slate-200/70 rounded-xl p-4">
-        <div class="flex items-start gap-2.5">
-          <svg class="w-5 h-5 text-blue-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"/>
-          </svg>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            <strong class="text-slate-800">Miễn trừ trách nhiệm:</strong> Thông tin phòng trống và đánh giá nhà trọ trên TrọCheck HCM mang tính chất tham khảo từ cộng đồng. Người thuê vui lòng kiểm tra thực tế và hợp đồng trước khi đặt cọc.
-          </p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Dòng bản quyền -->
-    <div class="mt-8 pt-5 border-t border-slate-100 text-xs text-slate-400 text-center sm:text-left">
-      © 2026 TrọCheck HCM. Dự án cộng đồng hỗ trợ tìm trọ an toàn tại TP.HCM.
-    </div>
-  </div>
-</footer>
+    </footer>
+</body>
+</html>
