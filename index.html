@@ -471,7 +471,7 @@
                     <h3 id="addHouseModalTitle" class="text-lg font-bold flex items-center gap-2">
                         <i class="fa-solid fa-house-medical"></i> Đóng góp nhà trọ mới
                     </h3>
-                    <p id="addHouseModalSubtitle" class="text-xs text-emerald-100">Phí đăng tin: 50.000đ / 1 slot • Duyệt nhanh sau khi chuyển khoản</p>
+                    <p id="addHouseModalSubtitle" class="text-xs text-emerald-100">Phí đăng tin: 19.999đ / 1 slot(báo cho admin để sửa thông tin thoải mái) • Duyệt nhanh sau khi chuyển khoản</p>
                 </div>
                 <button onclick="closeAddHouseModal()" class="w-9 h-9 rounded-xl bg-white/15 hover:bg-white/25 flex items-center justify-center transition">
                     <i class="fa-solid fa-xmark text-lg"></i>
@@ -481,7 +481,7 @@
             <form id="addHouseForm" onsubmit="submitNewHouse(event)" class="p-4 sm:p-6 overflow-y-auto custom-scrollbar space-y-4">
                 <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-start gap-2.5 text-xs text-amber-900">
                     <i class="fa-solid fa-circle-info text-amber-600 text-sm mt-0.5 shrink-0"></i>
-                    <span>Phí đăng tin là <strong>50.000đ / 1 nhà trọ</strong>. Sau khi điền thông tin, hệ thống sẽ tạo mã QR có sẵn <strong>ID nhà trọ</strong> để bạn quét thanh toán.</span>
+                    <span>Phí đăng tin là <strong>19.999đ / 1 slot</strong>. Sau khi điền thông tin, hệ thống sẽ tạo mã QR có sẵn <strong>ID nhà trọ</strong> để bạn quét thanh toán.</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -595,14 +595,14 @@
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
                     <button type="button" onclick="closeAddHouseModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold transition">Hủy</button>
                     <button type="submit" id="addHouseSubmitBtn" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-md transition active:scale-95 inline-flex items-center gap-2">
-                        <i class="fa-solid fa-qrcode"></i> Tiếp tục thanh toán (50.000đ)
+                        <i class="fa-solid fa-qrcode"></i> Tiếp tục thanh toán (19.999đ)
                     </button>
                 </div>
             </form>
 
             <div id="paymentStep" class="hidden p-5 sm:p-6 overflow-y-auto custom-scrollbar text-center space-y-4">
                 <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs text-emerald-900">
-                    Đã lưu thông tin nhà trọ! Vui lòng quét mã QR bên dưới để thanh toán <strong>50.000đ</strong> và bấm xác nhận.
+                    Đã lưu thông tin nhà trọ! Vui lòng quét mã QR bên dưới để thanh toán <strong>19.999đ</strong> và bấm xác nhận.
                 </div>
 
                 <div class="bg-white border-2 border-slate-200 rounded-2xl p-3 inline-block mx-auto shadow-sm">
@@ -612,7 +612,7 @@
                 <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-left space-y-2 text-xs sm:text-sm">
                     <div class="flex items-center justify-between">
                         <span class="text-slate-500">Số tiền:</span>
-                        <span class="font-extrabold text-rose-600">50.000đ</span>
+                        <span class="font-extrabold text-rose-600">19.999đ</span>
                     </div>
                     <div class="flex items-center justify-between gap-2">
                         <span class="text-slate-500">Nội dung CK (ID nhà trọ):</span>
@@ -630,7 +630,7 @@
                         Để sau
                     </button>
                     <button type="button" id="confirmPaymentBtn" onclick="confirmHousePayment()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md transition active:scale-95 inline-flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-check-circle"></i> Tôi đã chuyển khoản 50.000đ
+                        <i class="fa-solid fa-check-circle"></i> Tôi đã chuyển khoản 19.999đ
                     </button>
                 </div>
             </div>
@@ -726,7 +726,7 @@
             BANK_ID: "MB",
             ACCOUNT_NO: "77709876543210",
             ACCOUNT_NAME: "NGUYEN QUOC THINH",
-            AMOUNT: 50000
+            AMOUNT: 19999
         };
 
         const SAMPLE_DATA = {
@@ -1544,7 +1544,7 @@
             document.getElementById('addHouseForm').classList.remove('hidden');
             document.getElementById('paymentStep').classList.add('hidden');
             document.getElementById('addHouseModalTitle').innerHTML = '<i class="fa-solid fa-house-medical"></i> Đóng góp nhà trọ mới';
-            document.getElementById('addHouseModalSubtitle').textContent = 'Phí đăng tin: 50.000đ / 1 slot • Duyệt nhanh sau khi chuyển khoản';
+            document.getElementById('addHouseModalSubtitle').textContent = 'Phí đăng tin: 19.999đ / 1 slot(báo cho admin để sửa thông tin thoải mái) • Duyệt nhanh sau khi chuyển khoản';
             document.getElementById('addHouseModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
@@ -1616,7 +1616,7 @@
                 document.getElementById('addHouseForm').classList.add('hidden');
                 document.getElementById('paymentStep').classList.remove('hidden');
                 document.getElementById('addHouseModalTitle').innerHTML = '<i class="fa-solid fa-qrcode"></i> Thanh toán phí đăng tin';
-                document.getElementById('addHouseModalSubtitle').textContent = `Quét mã để thanh toán 50.000đ • Mã tin: ${houseId}`;
+                document.getElementById('addHouseModalSubtitle').textContent = `Quét mã để thanh toán 19.999đ • Mã tin: ${houseId}`;
             } catch (err) {
                 console.error('Lỗi gửi nhà trọ mới:', err);
                 showToast('Có lỗi khi gửi dữ liệu. Vui lòng thử lại.', 'error');
