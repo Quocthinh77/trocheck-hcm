@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrọCheck HCM - Tra Cứu Phòng Trống & Review Trọ TP.HCM</title>
 
-<!-- Mô tả hiển thị trên Google -->
-<meta name="description" content="TrọCheck HCM - Nền tảng tra cứu phòng trọ trống và xem review trọ thực tế từ cộng đồng sinh viên TP.HCM. Minh bạch, cập nhật liên tục.">
+    <!-- Mô tả hiển thị trên Google -->
+    <meta name="description" content="TrọCheck HCM - Nền tảng tra cứu phòng trọ trống và xem review trọ thực tế từ cộng đồng sinh viên TP.HCM. Minh bạch, cập nhật liên tục.">
 
-<!-- Hiển thị đẹp khi gửi link qua Zalo, Facebook, X -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://trocheck-hcm.vercel.app/">
-<meta property="og:title" content="TrọCheck HCM - Tra Cứu Phòng Trống & Review Trọ TP.HCM">
-<meta property="og:description" content="Tra cứu phòng trọ trống và xem review trọ thực tế từ cộng đồng sinh viên TP.HCM.">
-<meta property="og:image" content="https://trocheck-hcm.vercel.app/favicon.png">
+    <!-- Hiển thị đẹp khi gửi link qua Zalo, Facebook, X -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trocheck-hcm.vercel.app/">
+    <meta property="og:title" content="TrọCheck HCM - Tra Cứu Phòng Trống & Review Trọ TP.HCM">
+    <meta property="og:description" content="Tra cứu phòng trọ trống và xem review trọ thực tế từ cộng đồng sinh viên TP.HCM.">
+    <meta property="og:image" content="https://trocheck-hcm.vercel.app/favicon.png">
     <link rel="icon" type="image/png" href="favicon.png">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -227,7 +227,7 @@
             </div>
         </section>
 
-        <!-- Banner thông báo đang xem dữ liệu mẫu (nếu người dùng bật chế độ xem mẫu) -->
+        <!-- Banner thông báo đang xem dữ liệu mẫu -->
         <div id="sampleModeBanner" class="hidden mb-5 bg-amber-50 border border-amber-200 rounded-2xl p-3.5 sm:px-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div class="flex items-center gap-2.5 text-xs sm:text-sm text-amber-900">
                 <i class="fa-solid fa-flask text-amber-600 text-base shrink-0"></i>
@@ -258,9 +258,7 @@
         </div>
 
         <!-- ==================== DANH SÁCH NHÀ TRỌ ==================== -->
-        <section id="houseGrid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <!-- Render cards bằng JS -->
-        </section>
+        <section id="houseGrid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></section>
 
         <!-- ==================== EMPTY STATE: CHƯA CÓ DỮ LIỆU ĐÃ DUYỆT TRÊN SHEET ==================== -->
         <div id="sheetEmptyState" class="hidden bg-white rounded-2xl border border-slate-200 p-8 sm:p-12 text-center shadow-sm max-w-2xl mx-auto">
@@ -297,7 +295,6 @@
     <!-- ==================== MODAL CHI TIẾT NHÀ TRỌ (2 TABS) ==================== -->
     <div id="detailModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
         <div class="bg-white w-full max-w-3xl max-h-[92vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden modal-enter">
-            <!-- Header Modal -->
             <div class="bg-gradient-to-r from-blue-800 to-indigo-800 text-white px-5 py-4 flex items-start justify-between gap-3 shrink-0">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -315,7 +312,6 @@
                 </button>
             </div>
 
-            <!-- Thanh Tabs -->
             <div class="bg-slate-50 border-b border-slate-200 px-3 sm:px-5 flex items-center gap-1 overflow-x-auto shrink-0">
                 <button id="tabBtn-info" onclick="switchDetailTab('info')" class="px-3.5 py-3 text-xs sm:text-sm font-semibold border-b-2 whitespace-nowrap transition flex items-center gap-2">
                     <i class="fa-solid fa-circle-info"></i> Thông tin & Địa chỉ
@@ -325,11 +321,9 @@
                 </button>
             </div>
 
-            <!-- Nội dung Modal -->
             <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1 bg-white">
                 <!-- TAB 1: THÔNG TIN & ĐỊA CHỈ -->
                 <div id="tabContent-info" class="space-y-5">
-                    <!-- Địa chỉ + Copy -->
                     <div class="bg-blue-50/70 border border-blue-100 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div class="flex items-start gap-3">
                             <div class="w-9 h-9 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -345,7 +339,6 @@
                         </button>
                     </div>
 
-                    <!-- Giá & Phòng trống -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                         <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70">
                             <div class="text-xs font-semibold text-slate-500 mb-1">Giá thuê tham khảo</div>
@@ -359,7 +352,6 @@
                         </div>
                     </div>
 
-                    <!-- Liên hệ chủ trọ -->
                     <div class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white shadow-sm">
                         <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-3">Thông tin liên hệ chủ trọ</div>
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -387,7 +379,6 @@
 
                 <!-- TAB 2: CHỦ TRỌ & REVIEW -->
                 <div id="tabContent-reviews" class="hidden space-y-6">
-                    <!-- Tổng quan điểm đánh giá -->
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
                         <div class="flex items-center gap-3">
                             <div id="reviewLandlordAvatar" class="w-12 h-12 rounded-xl bg-indigo-600 text-white font-extrabold text-lg flex items-center justify-center shrink-0"></div>
@@ -405,7 +396,6 @@
                         </div>
                     </div>
 
-                    <!-- Form gửi Review lên cho Admin -->
                     <div class="bg-white border border-blue-200 rounded-2xl p-4 sm:p-5 shadow-sm">
                         <h4 class="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
                             <i class="fa-solid fa-pen-to-square text-blue-600"></i>
@@ -432,7 +422,7 @@
                             </div>
 
                             <div class="flex items-center justify-between gap-2">
-                                <span class="text-[11px] text-slate-400"><i class="fa-solid fa-clock mr-1"></i>Đánh giá sẽ hiển thị sau khi Admin duyệt.</span>
+                                <span class="text-[11px] text-slate-400"><i class="fa-solid fa-bolt mr-1"></i>Đánh giá sẽ hiển thị ngay lập tức.</span>
                                 <button type="submit" id="reviewSubmitBtn" class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl shadow-sm transition active:scale-95">
                                     <i class="fa-solid fa-paper-plane"></i> Gửi đánh giá
                                 </button>
@@ -440,7 +430,6 @@
                         </form>
                     </div>
 
-                    <!-- Danh sách Review đã duyệt -->
                     <div>
                         <h4 class="text-sm font-bold text-slate-800 mb-3">Đánh giá đã kiểm duyệt (<span id="reviewListCount">0</span>)</h4>
                         <div id="reviewList" class="space-y-3"></div>
@@ -450,22 +439,28 @@
         </div>
     </div>
 
-    <!-- ==================== MODAL ĐÓNG GÓP NHÀ TRỌ MỚI ==================== -->
+    <!-- ==================== MODAL ĐÓNG GÓP NHÀ TRỌ MỚI (2 BƯỚC: FORM + QR 50K) ==================== -->
     <div id="addHouseModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
         <div class="bg-white w-full max-w-xl max-h-[92vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden modal-enter">
             <div class="bg-gradient-to-r from-emerald-700 to-teal-700 text-white px-5 py-4 flex items-center justify-between shrink-0">
                 <div>
-                    <h3 class="text-lg font-bold flex items-center gap-2">
+                    <h3 id="addHouseModalTitle" class="text-lg font-bold flex items-center gap-2">
                         <i class="fa-solid fa-house-medical"></i> Đóng góp nhà trọ mới
                     </h3>
-                    <p class="text-xs text-emerald-100">Thông tin sẽ được gửi chờ Admin duyệt</p>
+                    <p id="addHouseModalSubtitle" class="text-xs text-emerald-100">Phí đăng tin: 50.000đ / 1 slot • Duyệt nhanh sau khi chuyển khoản</p>
                 </div>
                 <button onclick="closeAddHouseModal()" class="w-9 h-9 rounded-xl bg-white/15 hover:bg-white/25 flex items-center justify-center transition">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
 
+            <!-- BƯỚC 1: FORM NHẬP THÔNG TIN -->
             <form id="addHouseForm" onsubmit="submitNewHouse(event)" class="p-4 sm:p-6 overflow-y-auto custom-scrollbar space-y-4">
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-start gap-2.5 text-xs text-amber-900">
+                    <i class="fa-solid fa-circle-info text-amber-600 text-sm mt-0.5 shrink-0"></i>
+                    <span>Phí đăng tin là <strong>50.000đ / 1 nhà trọ</strong>. Sau khi điền thông tin, hệ thống sẽ tạo mã QR có sẵn <strong>ID nhà trọ</strong> để bạn quét thanh toán.</span>
+                </div>
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div>
                         <label class="block text-xs font-semibold text-slate-600 mb-1">Tên nhà trọ <span class="text-rose-500">*</span></label>
@@ -516,21 +511,64 @@
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
                     <button type="button" onclick="closeAddHouseModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold transition">Hủy</button>
                     <button type="submit" id="addHouseSubmitBtn" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-md transition active:scale-95 inline-flex items-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i> Gửi duyệt ngay
+                        <i class="fa-solid fa-qrcode"></i> Tiếp tục thanh toán (50.000đ)
                     </button>
                 </div>
             </form>
+
+            <!-- BƯỚC 2: QUÉT MÃ QR VIETQR -->
+            <div id="paymentStep" class="hidden p-5 sm:p-6 overflow-y-auto custom-scrollbar text-center space-y-4">
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs text-emerald-900">
+                    Đã lưu thông tin nhà trọ! Vui lòng quét mã QR bên dưới để thanh toán <strong>50.000đ</strong> và bấm xác nhận.
+                </div>
+
+                <div class="bg-white border-2 border-slate-200 rounded-2xl p-3 inline-block mx-auto shadow-sm">
+                    <img id="vietqrImage" src="" alt="Mã QR thanh toán VietQR" class="w-56 h-auto sm:w-64 mx-auto rounded-lg">
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-left space-y-2 text-xs sm:text-sm">
+                    <div class="flex items-center justify-between">
+                        <span class="text-slate-500">Số tiền:</span>
+                        <span class="font-extrabold text-rose-600">50.000đ</span>
+                    </div>
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-slate-500">Nội dung CK (ID nhà trọ):</span>
+                        <div class="flex items-center gap-1.5">
+                            <span id="paymentHouseIdText" class="font-extrabold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200"></span>
+                            <button type="button" onclick="copyPaymentId()" class="px-2 py-1 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-semibold transition">
+                                <i class="fa-regular fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+                    <button type="button" onclick="closeAddHouseModal()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold transition">
+                        Để sau
+                    </button>
+                    <button type="button" id="confirmPaymentBtn" onclick="confirmHousePayment()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md transition active:scale-95 inline-flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check-circle"></i> Tôi đã chuyển khoản 50.000đ
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- ==================== JAVASCRIPT LOGIC & GOOGLE SHEETS API ==================== -->
     <script>
         // =========================================================================
-        // 1. CẤU HÌNH BACKEND GOOGLE SHEETS (APPS SCRIPT)
+        // 1. CẤU HÌNH BACKEND GOOGLE SHEETS & TÀI KHOẢN NGÂN HÀNG NHẬN TIỀN
         // =========================================================================
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoE4UX3vGgb40NrghmF8mB100WaBd3PSLwuouBhy98m6V86xJ-vYgupDCFQdb2tC2X/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzgtv-GL9a8a4npsXsa2uRLnBngpAAlXQxQWRnWkiwr02TUtdZ5b2SE73j3dEv5Gmqh/exec";
 
-        // Dữ liệu mẫu minh họa (chỉ dùng khi người dùng bấm "Xem dữ liệu mẫu minh họa")
+        // SỬA THÔNG TIN NGÂN HÀNG CỦA BẠN TẠI ĐÂY
+        const BANK_CONFIG = {
+            BANK_ID: "MB",              // Mã ngân hàng: MB, VCB, TCB, ACB, BIDV, VPB, TPB, ICB...
+            ACCOUNT_NO: "0123456789",   // Số tài khoản nhận tiền
+            ACCOUNT_NAME: "NGUYEN VAN A", // Tên chủ tài khoản (viết hoa, không dấu)
+            AMOUNT: 50000
+        };
+
         const SAMPLE_DATA = {
             houses: [
                 {
@@ -595,6 +633,7 @@
         let isSampleMode = false;
         let currentHouseId = null;
         let currentReviewRating = 5;
+        let pendingPaymentHouseId = null;
 
         function getActiveHouses() {
             return isSampleMode ? SAMPLE_DATA.houses : liveHouses;
@@ -605,7 +644,7 @@
         }
 
         // =========================================================================
-        // 3. HÀM TIỆN ÍCH (XỬ LÝ GIÁ, PHÒNG TRỐNG, SAO, COPY, TOAST)
+        // 3. HÀM TIỆN ÍCH
         // =========================================================================
         function escapeHtml(str) {
             return String(str ?? '')
@@ -716,7 +755,7 @@
         }
 
         // =========================================================================
-        // 4. KẾT NỐI GOOGLE SHEETS (GET DATA)
+        // 4. KẾT NỐI GOOGLE SHEETS (GET DATA & ĐỒNG BỘ NGẦM KHÔNG CẦN F5)
         // =========================================================================
         async function fetchSheetData(showSuccessToast = false) {
             const loadingEl = document.getElementById('loadingState');
@@ -757,6 +796,24 @@
             } finally {
                 loadingEl.classList.add('hidden');
                 refreshIcon.classList.remove('fa-spin');
+            }
+        }
+
+        async function silentSyncData() {
+            try {
+                const res = await fetch(SCRIPT_URL, { method: 'GET', cache: 'no-store' });
+                if (!res.ok) return;
+                const data = await res.json();
+                liveHouses = Array.isArray(data.houses) ? data.houses : [];
+                liveReviews = Array.isArray(data.reviews) ? data.reviews : [];
+                updateKPIs();
+                applyFilters();
+                if (currentHouseId) {
+                    const house = getActiveHouses().find(h => String(h.id) === String(currentHouseId));
+                    if (house) renderTabReviews(house);
+                }
+            } catch (err) {
+                console.error('Lỗi đồng bộ ngầm:', err);
             }
         }
 
@@ -886,7 +943,6 @@
                 return `
                     <article class="bg-white rounded-2xl border border-slate-200/90 border-t-4 ${topAccent} shadow-sm hover:shadow-md transition-all flex flex-col overflow-hidden group">
                         <div class="p-4 sm:p-5 flex-1 flex flex-col">
-                            <!-- Khu vực & Trạng thái -->
                             <div class="flex items-center justify-between gap-2 mb-2.5">
                                 <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-100 truncate">
                                     ${escapeHtml(house.khuvuc || 'TP.HCM')}
@@ -894,18 +950,15 @@
                                 ${statusBadge}
                             </div>
 
-                            <!-- Tên nhà trọ -->
                             <h3 onclick="openDetailModal('${escapeHtml(house.id)}', 'info')" class="text-base font-bold text-slate-900 group-hover:text-blue-700 transition cursor-pointer line-clamp-1 mb-1.5">
                                 ${escapeHtml(house.ten)}
                             </h3>
 
-                            <!-- Địa chỉ -->
                             <p class="text-xs text-slate-600 flex items-start gap-1.5 mb-3.5 leading-relaxed">
                                 <i class="fa-solid fa-location-dot text-blue-500 mt-0.5 shrink-0"></i>
                                 <span>${escapeHtml(house.diachi)}</span>
                             </p>
 
-                            <!-- Giá thuê -->
                             <div class="bg-slate-50 rounded-xl p-3 mb-3.5 border border-slate-100 flex items-center justify-between">
                                 <div>
                                     <div class="text-[11px] text-slate-500 font-medium">Giá thuê tham khảo</div>
@@ -922,7 +975,6 @@
                                 </div>
                             </div>
 
-                            <!-- Chủ trọ & SĐT -->
                             <div class="flex items-center justify-between gap-2 text-xs mt-auto pt-1">
                                 <div class="flex items-center gap-2 min-w-0">
                                     <div class="w-7 h-7 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center shrink-0 text-[11px]">
@@ -936,7 +988,6 @@
                             </div>
                         </div>
 
-                        <!-- Nút hành động -->
                         <div class="px-4 py-3 bg-slate-50/80 border-t border-slate-100">
                             <button onclick="openDetailModal('${escapeHtml(house.id)}', 'info')" class="w-full py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold transition active:scale-95 flex items-center justify-center gap-1.5">
                                 <i class="fa-solid fa-magnifying-glass-location"></i> Xem chi tiết & Review
@@ -999,7 +1050,6 @@
             });
         }
 
-        // --- TAB 1: THÔNG TIN & ĐỊA CHỈ ---
         function renderTabInfo(house) {
             const rooms = parseRoomCount(house.phongtrong);
             const cleanPhone = cleanPhoneForLink(house.sdt);
@@ -1038,7 +1088,6 @@
             if (house && house.sdt) copyToClipboard(house.sdt, `Đã sao chép SĐT: ${house.sdt}`);
         }
 
-        // --- TAB 2: CHỦ TRỌ & REVIEW ---
         function renderTabReviews(house) {
             const list = getReviewsForHouse(house.id);
             const stats = getHouseRatingStats(house.id);
@@ -1102,7 +1151,7 @@
             renderStarPicker();
         }
 
-        // POST Review lên Google Sheets
+        // POST Review + Tự hiển thị ngay không cần F5
         async function submitReview(event) {
             event.preventDefault();
             if (!currentHouseId) return;
@@ -1133,10 +1182,26 @@
                     })
                 });
 
+                if (!isSampleMode) {
+                    liveReviews.push({
+                        id_nhatro: currentHouseId,
+                        nguoidanhgia,
+                        sao: currentReviewRating,
+                        noidung,
+                        ngay: new Date().toLocaleDateString('vi-VN'),
+                        trangthai: 1
+                    });
+                    const house = getActiveHouses().find(h => String(h.id) === String(currentHouseId));
+                    if (house) renderTabReviews(house);
+                    updateKPIs();
+                    applyFilters();
+                    setTimeout(silentSyncData, 1500);
+                }
+
                 document.getElementById('reviewForm').reset();
                 currentReviewRating = 5;
                 renderStarPicker();
-                showToast('Đã gửi đánh giá!', 'success');
+                showToast('Đã gửi đánh giá thành công!', 'success');
             } catch (err) {
                 console.error('Lỗi gửi review:', err);
                 showToast('Có lỗi khi gửi đánh giá. Vui lòng thử lại.', 'error');
@@ -1147,9 +1212,14 @@
         }
 
         // =========================================================================
-        // 7. MODAL ĐÓNG GÓP NHÀ TRỌ MỚI (POST LÊN GOOGLE SHEETS)
+        // 7. MODAL ĐÓNG GÓP NHÀ TRỌ MỚI + THANH TOÁN VIETQR 50K
         // =========================================================================
         function openAddHouseModal() {
+            pendingPaymentHouseId = null;
+            document.getElementById('addHouseForm').classList.remove('hidden');
+            document.getElementById('paymentStep').classList.add('hidden');
+            document.getElementById('addHouseModalTitle').innerHTML = '<i class="fa-solid fa-house-medical"></i> Đóng góp nhà trọ mới';
+            document.getElementById('addHouseModalSubtitle').textContent = 'Phí đăng tin: 50.000đ / 1 slot • Duyệt nhanh sau khi chuyển khoản';
             document.getElementById('addHouseModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
@@ -1159,11 +1229,20 @@
             document.body.style.overflow = '';
         }
 
+        function copyPaymentId() {
+            if (pendingPaymentHouseId) {
+                copyToClipboard(pendingPaymentHouseId, `Đã sao chép nội dung CK: ${pendingPaymentHouseId}`);
+            }
+        }
+
         async function submitNewHouse(event) {
             event.preventDefault();
 
+            const houseId = 'NT' + String(Date.now()).slice(-5) + Math.floor(10 + Math.random() * 90);
+
             const payload = {
                 type: 'house',
+                id: houseId,
                 ten: document.getElementById('newHouseName').value.trim(),
                 khuvuc: document.getElementById('newHouseArea').value,
                 diachi: document.getElementById('newHouseAddress').value.trim(),
@@ -1176,7 +1255,7 @@
             const btn = document.getElementById('addHouseSubmitBtn');
             const originalHtml = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang gửi...';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang tạo mã QR...';
 
             try {
                 await fetch(SCRIPT_URL, {
@@ -1186,12 +1265,50 @@
                     body: JSON.stringify(payload)
                 });
 
+                pendingPaymentHouseId = houseId;
+                const qrUrl = `https://img.vietqr.io/image/${BANK_CONFIG.BANK_ID}-${BANK_CONFIG.ACCOUNT_NO}-compact2.png?amount=${BANK_CONFIG.AMOUNT}&addInfo=${encodeURIComponent(houseId)}&accountName=${encodeURIComponent(BANK_CONFIG.ACCOUNT_NAME)}`;
+
+                document.getElementById('vietqrImage').src = qrUrl;
+                document.getElementById('paymentHouseIdText').textContent = houseId;
                 document.getElementById('addHouseForm').reset();
-                closeAddHouseModal();
-                showToast('Đã gửi thành công! Nhà trọ đang chờ Admin duyệt.', 'success');
+                document.getElementById('addHouseForm').classList.add('hidden');
+                document.getElementById('paymentStep').classList.remove('hidden');
+                document.getElementById('addHouseModalTitle').innerHTML = '<i class="fa-solid fa-qrcode"></i> Thanh toán phí đăng tin';
+                document.getElementById('addHouseModalSubtitle').textContent = `Quét mã để thanh toán 50.000đ • Mã tin: ${houseId}`;
             } catch (err) {
                 console.error('Lỗi gửi nhà trọ mới:', err);
                 showToast('Có lỗi khi gửi dữ liệu. Vui lòng thử lại.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
+            }
+        }
+
+        async function confirmHousePayment() {
+            if (!pendingPaymentHouseId) return;
+
+            const btn = document.getElementById('confirmPaymentBtn');
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang xác nhận...';
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        type: 'confirm_payment',
+                        id: pendingPaymentHouseId
+                    })
+                });
+
+                closeAddHouseModal();
+                showToast(`Đã ghi nhận thanh toán cho mã ${pendingPaymentHouseId}! Admin sẽ kiểm tra và duyệt sớm.`, 'success');
+                setTimeout(silentSyncData, 1500);
+            } catch (err) {
+                console.error('Lỗi xác nhận thanh toán:', err);
+                showToast('Có lỗi kết nối, vui lòng thử bấm xác nhận lại.', 'error');
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalHtml;
@@ -1229,7 +1346,6 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
 
-          <!-- Cột trái: Giới thiệu & Từ khóa SEO -->
           <div class="md:col-span-7 space-y-3">
             <h2 class="text-base font-bold text-slate-800">
               TrọCheck HCM – Review Trọ & Tra Cứu Phòng Trống TP.HCM
@@ -1250,7 +1366,6 @@
             </div>
           </div>
 
-          <!-- Cột phải: Khung Miễn trừ trách nhiệm -->
           <div class="md:col-span-5 bg-slate-50 border border-slate-200/70 rounded-xl p-4">
             <div class="flex items-start gap-2.5">
               <svg class="w-5 h-5 text-blue-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -1264,7 +1379,6 @@
 
         </div>
 
-        <!-- Dòng bản quyền -->
         <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-400 text-center sm:text-left">
           © 2026 TrọCheck HCM. Dự án cộng đồng hỗ trợ tìm trọ an toàn tại TP.HCM.
         </div>
