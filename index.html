@@ -5,23 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrọCheck HCM - Tra Cứu Phòng Trống & Review Trọ TP.HCM</title>
 
-    <!-- Mô tả hiển thị trên Google -->
     <meta name="description" content="TrọCheck HCM - Nền tảng tra cứu phòng trọ trống và xem review trọ thực tế từ cộng đồng sinh viên TP.HCM. Minh bạch, cập nhật liên tục.">
 
-    <!-- Hiển thị đẹp khi gửi link qua Zalo, Facebook, X -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://trocheck-hcm.vercel.app/">
     <meta property="og:title" content="TrọCheck HCM - Tra Cứu Phòng Trống & Review Trọ TP.HCM">
     <meta property="og:description" content="Tra cứu phòng trọ trống và xem review trọ thực tế từ cộng đồng sinh viên TP.HCM.">
     <meta property="og:image" content="https://trocheck-hcm.vercel.app/favicon.png">
     <link rel="icon" type="image/png" href="favicon.png">
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome 6 CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
         tailwind.config = {
@@ -69,10 +64,8 @@
 </head>
 <body class="text-slate-800 antialiased min-h-screen flex flex-col">
 
-    <!-- ==================== TOAST NOTIFICATION CONTAINER ==================== -->
     <div id="toastContainer" class="fixed top-4 right-4 z-[100] flex flex-col gap-2 max-w-sm w-[calc(100%-2rem)] pointer-events-none"></div>
 
-    <!-- ==================== HEADER (BLUE GRADIENT PORTAL) ==================== -->
     <header class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-800 text-white shadow-lg relative overflow-hidden">
         <div class="absolute inset-0 opacity-10 pointer-events-none">
             <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-white blur-3xl"></div>
@@ -80,7 +73,6 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-16 sm:pb-20 relative z-10">
-            <!-- Top Navigation Bar -->
             <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
                 <div class="flex items-center gap-3">
                     <div class="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-inner shrink-0">
@@ -97,7 +89,6 @@
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
                 <div class="flex flex-wrap items-center gap-2">
                     <button id="refreshBtn" onclick="fetchSheetData(true)" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs sm:text-sm font-medium transition active:scale-95">
                         <i id="refreshIcon" class="fa-solid fa-rotate text-sky-200"></i>
@@ -110,7 +101,6 @@
                 </div>
             </div>
 
-            <!-- Hero Title & KPI Summary Cards -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-end">
                 <div class="lg:col-span-5">
                     <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight mb-2">
@@ -153,13 +143,10 @@
         </div>
     </header>
 
-    <!-- ==================== MAIN CONTENT ==================== -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 pb-10">
 
-        <!-- ==================== FLOATING SEARCH & FILTER BAR ==================== -->
         <section class="-mt-10 sm:-mt-12 bg-white rounded-2xl shadow-md border border-slate-200/80 p-4 sm:p-5 mb-6 relative z-20">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
-                <!-- Search Input -->
                 <div class="md:col-span-4 relative">
                     <label for="searchInput" class="block text-xs font-semibold text-slate-500 mb-1">Tìm kiếm nhanh</label>
                     <div class="relative">
@@ -177,7 +164,6 @@
                     </div>
                 </div>
 
-                <!-- Khu vực -->
                 <div class="md:col-span-3">
                     <label for="areaFilter" class="block text-xs font-semibold text-slate-500 mb-1">Khu vực TP.HCM</label>
                     <select id="areaFilter" onchange="applyFilters()" class="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition">
@@ -193,7 +179,6 @@
                     </select>
                 </div>
 
-                <!-- Trạng thái -->
                 <div class="md:col-span-2">
                     <label for="statusFilter" class="block text-xs font-semibold text-slate-500 mb-1">Trạng thái</label>
                     <select id="statusFilter" onchange="applyFilters()" class="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition">
@@ -203,7 +188,6 @@
                     </select>
                 </div>
 
-                <!-- Mức giá -->
                 <div class="md:col-span-3 grid grid-cols-2 gap-2">
                     <div>
                         <label for="priceFilter" class="block text-xs font-semibold text-slate-500 mb-1">Mức giá</label>
@@ -227,7 +211,6 @@
             </div>
         </section>
 
-        <!-- Banner thông báo đang xem dữ liệu mẫu -->
         <div id="sampleModeBanner" class="hidden mb-5 bg-amber-50 border border-amber-200 rounded-2xl p-3.5 sm:px-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div class="flex items-center gap-2.5 text-xs sm:text-sm text-amber-900">
                 <i class="fa-solid fa-flask text-amber-600 text-base shrink-0"></i>
@@ -238,7 +221,6 @@
             </button>
         </div>
 
-        <!-- Thanh trạng thái kết quả -->
         <div id="resultBar" class="flex flex-wrap items-center justify-between gap-2 mb-4 px-1">
             <p class="text-sm text-slate-600">
                 Hiển thị <strong id="resultCount" class="text-blue-700 font-bold">0</strong> khu nhà trọ
@@ -250,17 +232,14 @@
             </div>
         </div>
 
-        <!-- ==================== LOADING STATE ==================== -->
         <div id="loadingState" class="bg-white rounded-2xl border border-slate-200 p-12 text-center shadow-sm">
             <div class="w-12 h-12 mx-auto mb-4 rounded-full border-4 border-blue-100 border-t-blue-600 animate-spin"></div>
             <h3 class="text-base font-bold text-slate-800">Đang tải dữ liệu lên...</h3>
             <p class="text-xs text-slate-500 mt-1">Vui lòng chờ trong giây lát</p>
         </div>
 
-        <!-- ==================== DANH SÁCH NHÀ TRỌ ==================== -->
         <section id="houseGrid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></section>
 
-        <!-- ==================== EMPTY STATE: CHƯA CÓ DỮ LIỆU ĐÃ DUYỆT TRÊN SHEET ==================== -->
         <div id="sheetEmptyState" class="hidden bg-white rounded-2xl border border-slate-200 p-8 sm:p-12 text-center shadow-sm max-w-2xl mx-auto">
             <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
                 <i class="fa-solid fa-table-list text-3xl"></i>
@@ -279,7 +258,6 @@
             </div>
         </div>
 
-        <!-- ==================== EMPTY STATE: KHÔNG KHỚP BỘ LỌC ==================== -->
         <div id="filterEmptyState" class="hidden bg-white rounded-2xl border border-slate-200 p-10 text-center shadow-sm">
             <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400">
                 <i class="fa-solid fa-house-circle-xmark text-2xl"></i>
@@ -322,7 +300,6 @@
             </div>
 
             <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1 bg-white">
-                <!-- TAB 1: THÔNG TIN & ĐỊA CHỈ -->
                 <div id="tabContent-info" class="space-y-5">
                     <div class="bg-blue-50/70 border border-blue-100 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div class="flex items-start gap-3">
@@ -330,8 +307,8 @@
                                 <i class="fa-solid fa-map-location-dot"></i>
                             </div>
                             <div>
-                                <div class="text-xs font-semibold text-blue-700 uppercase tracking-wide">Địa chỉ cụ thể</div>
-                               <div id="detailFullAddress" onclick="openCurrentHouseMap()" title="Bấm để xem bản đồ" class="text-sm font-semibold text-blue-700 hover:text-blue-900 underline decoration-dotted underline-offset-2 cursor-pointer mt-0.5"></div>
+                                <div class="text-xs font-semibold text-blue-700 uppercase tracking-wide">Địa chỉ cụ thể (bấm để xem bản đồ)</div>
+                                <div id="detailFullAddress" onclick="openCurrentHouseMap()" title="Bấm để xem bản đồ" class="text-sm font-semibold text-blue-700 hover:text-blue-900 underline decoration-dotted underline-offset-2 cursor-pointer mt-0.5"></div>
                             </div>
                         </div>
                         <button onclick="copyCurrentAddress()" class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-blue-600 hover:text-white text-blue-700 border border-blue-200 text-xs font-semibold shadow-sm transition shrink-0 active:scale-95">
@@ -349,6 +326,24 @@
                             <div class="text-xs font-semibold text-slate-500 mb-1">Tình trạng phòng trống</div>
                             <div id="detailRoomStatusText" class="text-2xl font-extrabold"></div>
                             <div id="detailRoomSubtext" class="text-xs text-slate-500 mt-1"></div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white shadow-sm space-y-3">
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Diện tích, Gác & Nội thất</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <span class="text-xs text-slate-500 block">Diện tích</span>
+                                <span id="detailAreaSize" class="font-bold text-slate-800"></span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <span class="text-xs text-slate-500 block">Tình trạng gác</span>
+                                <span id="detailLoft" class="font-bold text-slate-800"></span>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 text-sm">
+                            <span class="text-xs text-slate-500 block mb-0.5">Nội thất / Tiện ích</span>
+                            <span id="detailFurniture" class="font-medium text-slate-800"></span>
                         </div>
                     </div>
 
@@ -375,9 +370,14 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="detailMediaSection" class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white shadow-sm space-y-4">
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Hình ảnh & Video thực tế</div>
+                        <div id="detailImagesGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5"></div>
+                        <div id="detailVideoBox" class="hidden"></div>
+                    </div>
                 </div>
 
-                <!-- TAB 2: CHỦ TRỌ & REVIEW -->
                 <div id="tabContent-reviews" class="hidden space-y-6">
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
                         <div class="flex items-center gap-3">
@@ -454,11 +454,10 @@
                 </button>
             </div>
 
-            <!-- BƯỚC 1: FORM NHẬP THÔNG TIN -->
             <form id="addHouseForm" onsubmit="submitNewHouse(event)" class="p-4 sm:p-6 overflow-y-auto custom-scrollbar space-y-4">
                 <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-start gap-2.5 text-xs text-amber-900">
                     <i class="fa-solid fa-circle-info text-amber-600 text-sm mt-0.5 shrink-0"></i>
-                    <span>Phí đăng tin là <strong>50.000đ / 1 slot(được vĩnh viễn và thay đổi thông tin thoải mái)</strong>. Sau khi điền thông tin, hệ thống sẽ tạo mã QR có sẵn <strong>ID nhà trọ</strong> để bạn quét thanh toán.</span>
+                    <span>Phí đăng tin là <strong>50.000đ / 1 nhà trọ</strong>. Sau khi điền thông tin, hệ thống sẽ tạo mã QR có sẵn <strong>ID nhà trọ</strong> để bạn quét thanh toán.</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -508,6 +507,35 @@
                     </div>
                 </div>
 
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Diện tích (m²)</label>
+                        <input type="text" id="newHouseAreaSize" placeholder="VD: 25m²" class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Gác xép</label>
+                        <select id="newHouseLoft" class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500">
+                            <option value="Có gác">Có gác</option>
+                            <option value="Không gác">Không gác</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Nội thất / Tiện ích có sẵn</label>
+                    <input type="text" id="newHouseFurniture" placeholder="VD: Máy lạnh, tủ lạnh, kệ bếp, gác lửng, wifi..." class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Link ảnh phòng trọ (cách nhau bởi dấu phẩy hoặc xuống dòng)</label>
+                    <textarea id="newHouseImages" rows="2" placeholder="https://...jpg, https://...png" class="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Link video review / quay phòng (YouTube hoặc link .mp4)</label>
+                    <input type="url" id="newHouseVideo" placeholder="https://youtube.com/watch?v=... hoặc https://.../video.mp4" class="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500">
+                </div>
+
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
                     <button type="button" onclick="closeAddHouseModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold transition">Hủy</button>
                     <button type="submit" id="addHouseSubmitBtn" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-md transition active:scale-95 inline-flex items-center gap-2">
@@ -516,7 +544,6 @@
                 </div>
             </form>
 
-            <!-- BƯỚC 2: QUÉT MÃ QR VIETQR -->
             <div id="paymentStep" class="hidden p-5 sm:p-6 overflow-y-auto custom-scrollbar text-center space-y-4">
                 <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs text-emerald-900">
                     Đã lưu thông tin nhà trọ! Vui lòng quét mã QR bên dưới để thanh toán <strong>50.000đ</strong> và bấm xác nhận.
@@ -554,12 +581,116 @@
         </div>
     </div>
 
+    <!-- ==================== MODAL BẢN ĐỒ GOOGLE MAPS ==================== -->
+    <div
+        id="mapModal"
+        onclick="if(event.target.id === 'mapModal') closeMapModal()"
+        class="hidden fixed inset-0 z-[60] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4"
+    >
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden modal-enter flex flex-col">
+            <div class="bg-gradient-to-r from-blue-700 to-indigo-700 text-white px-5 py-3.5 flex items-center justify-between gap-3">
+                <div class="min-w-0">
+                    <h3 class="text-sm sm:text-base font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-sky-300"></i> Vị trí nhà trọ
+                    </h3>
+                    <p id="mapModalAddress" class="text-xs text-blue-100 truncate mt-0.5"></p>
+                </div>
+                <button onclick="closeMapModal()" class="w-8 h-8 rounded-xl bg-white/15 hover:bg-white/25 flex items-center justify-center transition shrink-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="w-full h-[360px] sm:h-[420px] bg-slate-100 relative">
+                <iframe
+                    id="mapIframe"
+                    src=""
+                    class="w-full h-full border-0"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen
+                ></iframe>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-2">
+                <a
+                    id="openGoogleMapsLink"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold transition active:scale-95"
+                >
+                    <i class="fa-solid fa-diamond-turn-right"></i> Mở chỉ đường Google Maps
+                </a>
+                <button onclick="closeMapModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs sm:text-sm font-semibold transition">
+                    Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== NÚT ZALO HỖ TRỢ MỞ THẲNG APP ==================== -->
+    <a
+        href="https://zalo.me/0842491525"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg shadow-blue-600/30 transition active:scale-95"
+        aria-label="Nhắn Zalo hỗ trợ"
+    >
+        <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-200 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+        </span>
+        <i class="fa-solid fa-comment-dots text-lg"></i>
+        <span class="text-xs sm:text-sm font-bold">Zalo Hỗ Trợ</span>
+    </a>
+
+    <!-- Chân trang gộp chuẩn SEO & Miễn trừ trách nhiệm -->
+    <footer class="bg-white border-t border-slate-200 mt-4">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+          <div class="md:col-span-7 space-y-3">
+            <h2 class="text-base font-bold text-slate-800">
+              TrọCheck HCM – Review Trọ & Tra Cứu Phòng Trống TP.HCM
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Nền tảng cộng đồng giúp sinh viên và người đi làm dễ dàng <strong>tìm phòng trọ trống</strong>,
+              xem <strong>review trọ thực tế</strong> về giá điện nước, an ninh, tiện ích và nhà trọ trước khi đặt cọc.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">TP. Thủ Đức</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Làng Đại học</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Bình Thạnh</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Gò Vấp</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Quận 10</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Quận 7</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Tân Bình</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Phú Nhuận</span>
+            </div>
+          </div>
+
+          <div class="md:col-span-5 bg-slate-50 border border-slate-200/70 rounded-xl p-4">
+            <div class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 text-blue-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"/>
+              </svg>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                <strong class="text-slate-800">Miễn trừ trách nhiệm:</strong> Thông tin phòng trống và đánh giá nhà trọ trên TrọCheck HCM mang tính chất tham khảo từ cộng đồng. Người thuê vui lòng kiểm tra thực tế và hợp đồng trước khi đặt cọc.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-400 text-center sm:text-left">
+          © 2026 TrọCheck HCM. Dự án cộng đồng hỗ trợ tìm trọ an toàn tại TP.HCM.
+        </div>
+      </div>
+    </footer>
+
     <!-- ==================== JAVASCRIPT LOGIC & GOOGLE SHEETS API ==================== -->
     <script>
-        // =========================================================================
-        // 1. CẤU HÌNH BACKEND GOOGLE SHEETS & TÀI KHOẢN NGÂN HÀNG NHẬN TIỀN
-        // =========================================================================
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzgtv-GL9a8a4npsXsa2uRLnBngpAAlXQxQWRnWkiwr02TUtdZ5b2SE73j3dEv5Gmqh/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbze-FCXsaYYe33z7rIM7mTEp_v3Dv-CWQxClPxPUrhnBTdSL0OJixTR64JZQcd6yJMZ/exec";
 
         const BANK_CONFIG = {
             BANK_ID: "MB",
@@ -579,7 +710,12 @@
                     sdt: "0908 412 889",
                     gia: 3.4,
                     phongtrong: 3,
-                    trangthai: 1
+                    trangthai: 1,
+                    dientich: "26m²",
+                    gac: "Có gác",
+                    noithat: "Máy lạnh, kệ bếp, tủ đồ, wifi",
+                    hinhanh: "",
+                    video: ""
                 },
                 {
                     id: "SAMPLE_2",
@@ -590,7 +726,12 @@
                     sdt: "0937 556 201",
                     gia: 2.6,
                     phongtrong: 4,
-                    trangthai: 1
+                    trangthai: 1,
+                    dientich: "22m²",
+                    gac: "Có gác",
+                    noithat: "Quạt trần, kệ bếp, chỗ để xe",
+                    hinhanh: "",
+                    video: ""
                 },
                 {
                     id: "SAMPLE_3",
@@ -601,7 +742,12 @@
                     sdt: "0902 661 452",
                     gia: 4.5,
                     phongtrong: 0,
-                    trangthai: 1
+                    trangthai: 1,
+                    dientich: "30m²",
+                    gac: "Không gác",
+                    noithat: "Máy lạnh, tủ lạnh, máy nước nóng, giường",
+                    hinhanh: "",
+                    video: ""
                 }
             ],
             reviews: [
@@ -624,9 +770,6 @@
             ]
         };
 
-        // =========================================================================
-        // 2. STATE ỨNG DỤNG
-        // =========================================================================
         let liveHouses = [];
         let liveReviews = [];
         let isSampleMode = false;
@@ -642,9 +785,6 @@
             return isSampleMode ? SAMPLE_DATA.reviews : liveReviews;
         }
 
-        // =========================================================================
-        // 3. HÀM TIỆN ÍCH
-        // =========================================================================
         function escapeHtml(str) {
             return String(str ?? '')
                 .replace(/&/g, '&amp;')
@@ -753,9 +893,6 @@
             }, 3500);
         }
 
-        // =========================================================================
-        // 4. KẾT NỐI GOOGLE SHEETS (GET DATA & ĐỒNG BỘ NGẦM KHÔNG CẦN F5)
-        // =========================================================================
         async function fetchSheetData(showSuccessToast = false) {
             const loadingEl = document.getElementById('loadingState');
             const gridEl = document.getElementById('houseGrid');
@@ -831,9 +968,6 @@
             applyFilters();
         }
 
-        // =========================================================================
-        // 5. CẬP NHẬT KPI, BỘ LỌC & RENDER DANH SÁCH THẺ
-        // =========================================================================
         function updateKPIs() {
             const houses = getActiveHouses();
             const reviews = getActiveReviews();
@@ -884,7 +1018,7 @@
 
             let filtered = houses.filter(h => {
                 if (query) {
-                    const haystack = `${h.ten} ${h.diachi} ${h.khuvuc} ${h.chutro}`.toLowerCase();
+                    const haystack = `${h.ten} ${h.diachi} ${h.khuvuc} ${h.chutro} ${h.noithat || ''}`.toLowerCase();
                     if (!haystack.includes(query)) return false;
                 }
 
@@ -957,6 +1091,7 @@
                                 <i class="fa-solid fa-location-dot text-blue-500 mt-0.5 shrink-0"></i>
                                 <span class="underline decoration-dotted underline-offset-2">${escapeHtml(house.diachi)}</span>
                             </p>
+
                             <div class="bg-slate-50 rounded-xl p-3 mb-3.5 border border-slate-100 flex items-center justify-between">
                                 <div>
                                     <div class="text-[11px] text-slate-500 font-medium">Giá thuê tham khảo</div>
@@ -971,6 +1106,14 @@
                                         <span class="text-slate-400">(${stats.count})</span>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="text-xs text-slate-600 space-y-1.5 mb-3.5">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    ${house.dientich ? `<span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium"><i class="fa-solid fa-vector-square text-blue-500 mr-1"></i>${escapeHtml(house.dientich)}</span>` : ''}
+                                    ${house.gac ? `<span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium"><i class="fa-solid fa-layer-group text-indigo-500 mr-1"></i>${escapeHtml(house.gac)}</span>` : ''}
+                                </div>
+                                ${house.noithat ? `<p class="text-slate-600 line-clamp-1"><i class="fa-solid fa-couch text-amber-500 mr-1"></i><span class="font-medium text-slate-700">Nội thất:</span> ${escapeHtml(house.noithat)}</p>` : ''}
                             </div>
 
                             <div class="flex items-center justify-between gap-2 text-xs mt-auto pt-1">
@@ -996,9 +1139,6 @@
             }).join('');
         }
 
-        // =========================================================================
-        // 6. MODAL CHI TIẾT NHÀ TRỌ (2 TABS)
-        // =========================================================================
         function openDetailModal(houseId, initialTab = 'info') {
             currentHouseId = houseId;
             const house = getActiveHouses().find(h => String(h.id) === String(houseId));
@@ -1068,12 +1208,58 @@
                 subText.textContent = 'Liên hệ chủ trọ để hỏi lịch sắp trống';
             }
 
+            document.getElementById('detailAreaSize').textContent = house.dientich || 'Đang cập nhật';
+            document.getElementById('detailLoft').textContent = house.gac || 'Đang cập nhật';
+            document.getElementById('detailFurniture').textContent = house.noithat || 'Chưa cập nhật nội thất';
+
             document.getElementById('infoLandlordAvatar').textContent = initial;
             document.getElementById('infoLandlordName').textContent = house.chutro || 'Chủ trọ';
             document.getElementById('infoLandlordPhone').textContent = house.sdt || 'Chưa cập nhật';
 
             document.getElementById('callLandlordLink').href = cleanPhone ? `tel:${cleanPhone}` : '#';
             document.getElementById('zaloLandlordLink').href = cleanPhone ? `https://zalo.me/${cleanPhone}` : '#';
+
+            const rawImgs = String(house.hinhanh || '').split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+            const imgGrid = document.getElementById('detailImagesGrid');
+            const videoBox = document.getElementById('detailVideoBox');
+
+            if (rawImgs.length > 0) {
+                imgGrid.innerHTML = rawImgs.map(url => `
+                    <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="block aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-100 group">
+                        <img src="${escapeHtml(url)}" alt="Ảnh phòng trọ" class="w-full h-full object-cover group-hover:scale-105 transition">
+                    </a>
+                `).join('');
+            } else {
+                imgGrid.innerHTML = `<p class="col-span-full text-xs text-slate-400">Chưa có ảnh đính kèm.</p>`;
+            }
+
+            const videoUrl = String(house.video || '').trim();
+            if (videoUrl) {
+                videoBox.classList.remove('hidden');
+                const ytMatch = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{6,})/);
+                if (ytMatch) {
+                    videoBox.innerHTML = `
+                        <div class="aspect-video rounded-xl overflow-hidden border border-slate-200 bg-black">
+                            <iframe src="https://www.youtube.com/embed/${escapeHtml(ytMatch[1])}" class="w-full h-full border-0" allowfullscreen></iframe>
+                        </div>
+                    `;
+                } else if (/\.mp4(\?|$)/i.test(videoUrl)) {
+                    videoBox.innerHTML = `
+                        <video controls class="w-full max-h-72 rounded-xl border border-slate-200 bg-black">
+                            <source src="${escapeHtml(videoUrl)}" type="video/mp4">
+                        </video>
+                    `;
+                } else {
+                    videoBox.innerHTML = `
+                        <a href="${escapeHtml(videoUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-semibold transition">
+                            <i class="fa-solid fa-play-circle"></i> Xem video nhà trọ
+                        </a>
+                    `;
+                }
+            } else {
+                videoBox.classList.add('hidden');
+                videoBox.innerHTML = '';
+            }
         }
 
         function copyCurrentAddress() {
@@ -1149,7 +1335,6 @@
             renderStarPicker();
         }
 
-        // POST Review + Tự hiển thị ngay không cần F5
         async function submitReview(event) {
             event.preventDefault();
             if (!currentHouseId) return;
@@ -1209,9 +1394,6 @@
             }
         }
 
-        // =========================================================================
-        // 7. MODAL ĐÓNG GÓP NHÀ TRỌ MỚI + THANH TOÁN VIETQR 50K
-        // =========================================================================
         function openAddHouseModal() {
             pendingPaymentHouseId = null;
             document.getElementById('addHouseForm').classList.remove('hidden');
@@ -1247,7 +1429,12 @@
                 chutro: document.getElementById('newLandlordName').value.trim(),
                 sdt: document.getElementById('newLandlordPhone').value.trim(),
                 gia: parseFloat(document.getElementById('newHousePrice').value) || 0,
-                phongtrong: parseInt(document.getElementById('newAvailableCount').value, 10) || 0
+                phongtrong: parseInt(document.getElementById('newAvailableCount').value, 10) || 0,
+                dientich: document.getElementById('newHouseAreaSize').value.trim(),
+                gac: document.getElementById('newHouseLoft').value,
+                noithat: document.getElementById('newHouseFurniture').value.trim(),
+                hinhanh: document.getElementById('newHouseImages').value.trim(),
+                video: document.getElementById('newHouseVideo').value.trim()
             };
 
             const btn = document.getElementById('addHouseSubmitBtn');
@@ -1313,11 +1500,30 @@
             }
         }
 
-        // Đóng modal khi bấm ESC hoặc click nền tối
+        function openMapModal(address) {
+            if (!address) return;
+            const cleanAddr = String(address).trim();
+            document.getElementById('mapModalAddress').textContent = cleanAddr;
+            document.getElementById('mapIframe').src = `https://maps.google.com/maps?q=${encodeURIComponent(cleanAddr)}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
+            document.getElementById('openGoogleMapsLink').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanAddr)}`;
+            document.getElementById('mapModal').classList.remove('hidden');
+        }
+
+        function closeMapModal() {
+            document.getElementById('mapModal').classList.add('hidden');
+            document.getElementById('mapIframe').src = '';
+        }
+
+        function openCurrentHouseMap() {
+            const house = getActiveHouses().find(h => String(h.id) === String(currentHouseId));
+            if (house && house.diachi) openMapModal(house.diachi);
+        }
+
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
                 closeDetailModal();
                 closeAddHouseModal();
+                closeMapModal();
             }
         });
 
@@ -1330,133 +1536,17 @@
             });
         });
 
-        // =========================================================================
-        // 8. KHỞI CHẠY ỨNG DỤNG
-        // =========================================================================
         window.addEventListener('DOMContentLoaded', () => {
             updateKPIs();
             fetchSheetData(false);
+
             setInterval(() => {
                 if (!isSampleMode) silentSyncData();
             }, 20000);
         });
     </script>
-
-    <!-- Chân trang gộp chuẩn SEO & Miễn trừ trách nhiệm -->
-    <footer class="bg-white border-t border-slate-200 mt-4">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-
-          <div class="md:col-span-7 space-y-3">
-            <h2 class="text-base font-bold text-slate-800">
-              TrọCheck HCM – Review Trọ & Tra Cứu Phòng Trống TP.HCM
-            </h2>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Nền tảng cộng đồng giúp sinh viên và người đi làm dễ dàng <strong>tìm phòng trọ trống</strong>,
-              xem <strong>review trọ thực tế</strong> về giá điện nước, an ninh, tiện ích và nhà trọ trước khi đặt cọc.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">TP. Thủ Đức</span>
-              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Làng Đại học</span>
-              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Bình Thạnh</span>
-              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Gò Vấp</span>
-              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Quận 10</span>
-              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Quận 7</span>
-              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Tân Bình</span>
-              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Phú Nhuận</span>
-            </div>
-          </div>
-
-          <div class="md:col-span-5 bg-slate-50 border border-slate-200/70 rounded-xl p-4">
-            <div class="flex items-start gap-2.5">
-              <svg class="w-5 h-5 text-blue-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"/>
-              </svg>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                <strong class="text-slate-800">Miễn trừ trách nhiệm:</strong> Thông tin phòng trống và đánh giá nhà trọ trên TrọCheck HCM mang tính chất tham khảo từ cộng đồng. Người thuê vui lòng kiểm tra thực tế và hợp đồng trước khi đặt cọc.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-400 text-center sm:text-left">
-          © 2026 TrọCheck HCM. Dự án cộng đồng hỗ trợ tìm trọ an toàn tại TP.HCM.
-        </div>
-      </div>
-    </footer>
-    <!-- ==================== NÚT ZALO HỖ TRỢ MỞ THẲNG APP ==================== -->
-    <a
-        href="https://zalo.me/0842491525"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg shadow-blue-600/30 transition active:scale-95"
-        aria-label="Nhắn Zalo hỗ trợ"
-    >
-        <span class="relative flex h-3 w-3">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-200 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
-        </span>
-        <i class="fa-solid fa-comment-dots text-lg"></i>
-        <span class="text-xs sm:text-sm font-bold">Zalo Hỗ Trợ</span>
-    </a>
-    <!-- ==================== MODAL BẢN ĐỒ GOOGLE MAPS ==================== -->
-    <div
-        id="mapModal"
-        onclick="if(event.target.id === 'mapModal') closeMapModal()"
-        class="hidden fixed inset-0 z-[60] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4"
-    >
-        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden modal-enter flex flex-col">
-            <div class="bg-gradient-to-r from-blue-700 to-indigo-700 text-white px-5 py-3.5 flex items-center justify-between gap-3">
-                <div class="min-w-0">
-                    <h3 class="text-sm sm:text-base font-bold flex items-center gap-2">
-                        <i class="fa-solid fa-map-location-dot text-sky-300"></i> Vị trí nhà trọ
-                    </h3>
-                    <p id="mapModalAddress" class="text-xs text-blue-100 truncate mt-0.5"></p>
-                </div>
-                <button onclick="closeMapModal()" class="w-8 h-8 rounded-xl bg-white/15 hover:bg-white/25 flex items-center justify-center transition shrink-0">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <div class="w-full h-[360px] sm:h-[420px] bg-slate-100 relative">
-                <iframe
-                    id="mapIframe"
-                    src=""
-                    class="w-full h-full border-0"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    allowfullscreen
-                ></iframe>
-            </div>
-
-            <div class="p-3.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-2">
-                <a
-                    id="openGoogleMapsLink"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold transition active:scale-95"
-                >
-                    <i class="fa-solid fa-diamond-turn-right"></i> Mở chỉ đường Google Maps
-                </a>
-                <button onclick="closeMapModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs sm:text-sm font-semibold transition">
-                    Đóng
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function openMapModal(address) {
-            if (!address) return;
-            const cleanAddr = String(address).trim();
-            document.getElementById('mapModalAddress').textContent = cleanAddr;
-            document.getElementById('mapIframe').src = `https://maps.google.com/maps?q=${encodeURIComponent(cleanAddr)}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
-            document.getElementById('openGoogleMapsLink').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanAddr)}`;
-            document.getElementById('mapModal').classList.remove('hidden');
-        }
-
+</body>
+</html>
         function closeMapModal() {
             document.getElementById('mapModal').classList.add('hidden');
             document.getElementById('mapIframe').src = '';
