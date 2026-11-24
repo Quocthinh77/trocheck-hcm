@@ -24,6 +24,12 @@
     <!-- FontAwesome 6 CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
+        const BANK_CONFIG = {
+            BANK_ID: "MB",
+            ACCOUNT_NO: "77709876543210",
+            ACCOUNT_NAME: "NGUYEN QUOC THINH",
+            AMOUNT: 50000
+        };
         tailwind.config = {
             theme: {
                 extend: {
@@ -1266,7 +1272,7 @@
                 });
 
                 pendingPaymentHouseId = houseId;
-              const qrUrl = "qr-momo.jpg";
+              const qrUrl = `https://img.vietqr.io/image/${BANK_CONFIG.BANK_ID}-${BANK_CONFIG.ACCOUNT_NO}-compact2.png?amount=${BANK_CONFIG.AMOUNT}&addInfo=${encodeURIComponent(houseId)}&accountName=${encodeURIComponent(BANK_CONFIG.ACCOUNT_NAME)}`;
 
                 document.getElementById('vietqrImage').src = qrUrl;
                 document.getElementById('paymentHouseIdText').textContent = houseId;
