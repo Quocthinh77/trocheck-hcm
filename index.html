@@ -300,17 +300,7 @@
     </main>
 
     <!-- ==================== FOOTER WITH LEGAL DISCLAIMER ==================== -->
-    <footer class="bg-white border-t border-slate-200 py-6 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2 text-xs text-slate-500">
-            <div class="flex items-start gap-2 leading-relaxed">
-                <i class="fa-solid fa-shield-halved text-blue-600 text-sm mt-0.5 shrink-0"></i>
-                <p><strong>Miễn trừ trách nhiệm:</strong> Thông tin phòng trống và đánh giá nhà trọ trên TrọCheck HCM mang tính chất tham khảo từ cộng đồng. Người thuê vui lòng kiểm tra thực tế và hợp đồng trước khi đặt cọc.</p>
-            </div>
-            <div class="text-[11px] text-slate-400 pl-6">
-                © 2026 TrọCheck HCM.
-            </div>
-        </div>
-    </footer>
+    
 
     <!-- ==================== MODAL CHI TIẾT NHÀ TRỌ (3 TABS) ==================== -->
     <div id="detailModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
@@ -1457,5 +1447,49 @@
     </div>
   </div>
 </footer>
-</body>
-</html>
+   <!-- Chân trang gộp chuẩn SEO & Miễn trừ trách nhiệm -->
+<footer class="bg-white border-t border-slate-200 mt-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      
+      <!-- Cột trái: Giới thiệu & Từ khóa SEO -->
+      <div class="md:col-span-7 space-y-3">
+        <h2 class="text-base font-bold text-slate-800">
+          TrọCheck HCM – Review Trọ & Tra Cứu Phòng Trống TP.HCM
+        </h2>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Nền tảng cộng đồng giúp sinh viên và người đi làm dễ dàng <strong>tìm phòng trọ trống</strong>, 
+          xem <strong>review trọ thực tế</strong> về giá điện nước, an ninh, tiện ích và nhà trọ trước khi đặt cọc.
+        </p>
+        <div class="flex flex-wrap gap-1.5 pt-1">
+          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">TP. Thủ Đức</span>
+          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Làng Đại học</span>
+          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Bình Thạnh</span>
+          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Gò Vấp</span>
+          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Quận 10</span>
+          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Quận 7</span>
+          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Tân Bình</span>
+          <span class="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full text-xs">Phú Nhuận</span>
+        </div>
+      </div>
+
+      <!-- Cột phải: Khung Miễn trừ trách nhiệm -->
+      <div class="md:col-span-5 bg-slate-50 border border-slate-200/70 rounded-xl p-4">
+        <div class="flex items-start gap-2.5">
+          <svg class="w-5 h-5 text-blue-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"/>
+          </svg>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            <strong class="text-slate-800">Miễn trừ trách nhiệm:</strong> Thông tin phòng trống và đánh giá nhà trọ trên TrọCheck HCM mang tính chất tham khảo từ cộng đồng. Người thuê vui lòng kiểm tra thực tế và hợp đồng trước khi đặt cọc.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Dòng bản quyền -->
+    <div class="mt-8 pt-5 border-t border-slate-100 text-xs text-slate-400 text-center sm:text-left">
+      © 2026 TrọCheck HCM. Dự án cộng đồng hỗ trợ tìm trọ an toàn tại TP.HCM.
+    </div>
+  </div>
+</footer>
