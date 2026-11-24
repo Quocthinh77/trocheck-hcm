@@ -24,12 +24,6 @@
     <!-- FontAwesome 6 CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
-        const BANK_CONFIG = {
-            BANK_ID: "MB",
-            ACCOUNT_NO: "77709876543210",
-            ACCOUNT_NAME: "NGUYEN QUOC THINH",
-            AMOUNT: 50000
-        };
         tailwind.config = {
             theme: {
                 extend: {
@@ -567,11 +561,10 @@
         // =========================================================================
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzgtv-GL9a8a4npsXsa2uRLnBngpAAlXQxQWRnWkiwr02TUtdZ5b2SE73j3dEv5Gmqh/exec";
 
-        // SỬA THÔNG TIN NGÂN HÀNG CỦA BẠN TẠI ĐÂY
         const BANK_CONFIG = {
-            BANK_ID: "MB",              // Mã ngân hàng: MB, VCB, TCB, ACB, BIDV, VPB, TPB, ICB...
-            ACCOUNT_NO: "0123456789",   // Số tài khoản nhận tiền
-            ACCOUNT_NAME: "NGUYEN VAN A", // Tên chủ tài khoản (viết hoa, không dấu)
+            BANK_ID: "MB",
+            ACCOUNT_NO: "77709876543210",
+            ACCOUNT_NAME: "NGUYEN QUOC THINH",
             AMOUNT: 50000
         };
 
@@ -1272,7 +1265,7 @@
                 });
 
                 pendingPaymentHouseId = houseId;
-              const qrUrl = `https://img.vietqr.io/image/${BANK_CONFIG.BANK_ID}-${BANK_CONFIG.ACCOUNT_NO}-compact2.png?amount=${BANK_CONFIG.AMOUNT}&addInfo=${encodeURIComponent(houseId)}&accountName=${encodeURIComponent(BANK_CONFIG.ACCOUNT_NAME)}`;
+                const qrUrl = `https://img.vietqr.io/image/${BANK_CONFIG.BANK_ID}-${BANK_CONFIG.ACCOUNT_NO}-compact2.png?amount=${BANK_CONFIG.AMOUNT}&addInfo=${encodeURIComponent(houseId)}&accountName=${encodeURIComponent(BANK_CONFIG.ACCOUNT_NAME)}`;
 
                 document.getElementById('vietqrImage').src = qrUrl;
                 document.getElementById('paymentHouseIdText').textContent = houseId;
