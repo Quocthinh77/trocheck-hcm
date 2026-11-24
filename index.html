@@ -331,7 +331,7 @@
                             </div>
                             <div>
                                 <div class="text-xs font-semibold text-blue-700 uppercase tracking-wide">Địa chỉ cụ thể</div>
-                                <div id="detailFullAddress" class="text-sm font-semibold text-slate-800 mt-0.5"></div>
+                               <div id="detailFullAddress" onclick="openCurrentHouseMap()" title="Bấm để xem bản đồ" class="text-sm font-semibold text-blue-700 hover:text-blue-900 underline decoration-dotted underline-offset-2 cursor-pointer mt-0.5"></div>
                             </div>
                         </div>
                         <button onclick="copyCurrentAddress()" class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-blue-600 hover:text-white text-blue-700 border border-blue-200 text-xs font-semibold shadow-sm transition shrink-0 active:scale-95">
@@ -953,7 +953,10 @@
                                 ${escapeHtml(house.ten)}
                             </h3>
 
-                            <p class="text-xs text-slate-600 flex items-start gap-1.5 mb-3.5 leading-relaxed">
+                            <p onclick="openMapModal('${escapeHtml(house.diachi)}')" title="Bấm để xem bản đồ" class="text-xs text-slate-600 hover:text-blue-600 flex items-start gap-1.5 mb-3.5 leading-relaxed cursor-pointer transition">
+                                <i class="fa-solid fa-location-dot text-blue-500 mt-0.5 shrink-0"></i>
+                                <span class="underline decoration-dotted underline-offset-2">${escapeHtml(house.diachi)}</span>
+                            </p>
                                 <i class="fa-solid fa-location-dot text-blue-500 mt-0.5 shrink-0"></i>
                                 <span>${escapeHtml(house.diachi)}</span>
                             </p>
@@ -1401,5 +1404,72 @@
         <i class="fa-solid fa-comment-dots text-lg"></i>
         <span class="text-xs sm:text-sm font-bold">Zalo Hỗ Trợ</span>
     </a>
+    <!-- ==================== MODAL BẢN ĐỒ GOOGLE MAPS ==================== -->
+    <div
+        id="mapModal"
+        onclick="if(event.target.id === 'mapModal') closeMapModal()"
+        class="hidden fixed inset-0 z-[60] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4"
+    >
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden modal-enter flex flex-col">
+            <div class="bg-gradient-to-r from-blue-700 to-indigo-700 text-white px-5 py-3.5 flex items-center justify-between gap-3">
+                <div class="min-w-0">
+                    <h3 class="text-sm sm:text-base font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-sky-300"></i> Vị trí nhà trọ
+                    </h3>
+                    <p id="mapModalAddress" class="text-xs text-blue-100 truncate mt-0.5"></p>
+                </div>
+                <button onclick="closeMapModal()" class="w-8 h-8 rounded-xl bg-white/15 hover:bg-white/25 flex items-center justify-center transition shrink-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="w-full h-[360px] sm:h-[420px] bg-slate-100 relative">
+                <iframe
+                    id="mapIframe"
+                    src=""
+                    class="w-full h-full border-0"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen
+                ></iframe>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-2">
+                <a
+                    id="openGoogleMapsLink"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold transition active:scale-95"
+                >
+                    <i class="fa-solid fa-diamond-turn-right"></i> Mở chỉ đường Google Maps
+                </a>
+                <button onclick="closeMapModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs sm:text-sm font-semibold transition">
+                    Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openMapModal(address) {
+            if (!address) return;
+            const cleanAddr = String(address).trim();
+            document.getElementById('mapModalAddress').textContent = cleanAddr;
+            document.getElementById('mapIframe').src = `https://maps.google.com/maps?q=${encodeURIComponent(cleanAddr)}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
+            document.getElementById('openGoogleMapsLink').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanAddr)}`;
+            document.getElementById('mapModal').classList.remove('hidden');
+        }
+
+        function closeMapModal() {
+            document.getElementById('mapModal').classList.add('hidden');
+            document.getElementById('mapIframe').src = '';
+        }
+
+        function openCurrentHouseMap() {
+            const house = getActiveHouses().find(h => String(h.id) === String(currentHouseId));
+            if (house && house.diachi) openMapModal(house.diachi);
+        }
+    </script>
 </body>
 </html>
