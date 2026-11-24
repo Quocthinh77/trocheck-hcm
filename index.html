@@ -1266,7 +1266,7 @@
                 });
 
                 pendingPaymentHouseId = houseId;
-                const qrUrl = `https://img.vietqr.io/image/${BANK_CONFIG.BANK_ID}-${BANK_CONFIG.ACCOUNT_NO}-compact2.png?amount=${BANK_CONFIG.AMOUNT}&addInfo=${encodeURIComponent(houseId)}&accountName=${encodeURIComponent(BANK_CONFIG.ACCOUNT_NAME)}`;
+              const qrUrl = "qr-momo.jpg";
 
                 document.getElementById('vietqrImage').src = qrUrl;
                 document.getElementById('paymentHouseIdText').textContent = houseId;
