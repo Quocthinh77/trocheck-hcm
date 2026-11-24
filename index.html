@@ -578,7 +578,7 @@
 
                 <div>
                     <div class="flex items-center justify-between gap-2 mb-1">
-                        <label class="block text-xs font-semibold text-slate-600">Đăng ảnh phòng trọ (không giới hạn số lượng)</label>
+                        <label class="block text-xs font-semibold text-slate-600">Đăng ảnh phòng trọ (tự nén nhẹ cho Sheet)</label>
                         <span id="selectedImageCount" class="text-[11px] font-semibold text-emerald-700">0 ảnh đã chọn</span>
                     </div>
                     <input type="file" id="newHouseImageFiles" accept="image/*" multiple onchange="handleImageFilesChange(event)" class="block w-full text-xs text-slate-600 file:mr-3 file:py-2 file:px-3.5 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer bg-slate-50 border border-slate-200 rounded-xl p-1.5">
@@ -937,7 +937,7 @@
             }, 3500);
         }
 
-        function compressImageFile(file, maxWidth = 800, quality = 0.62) {
+        function compressImageFile(file, maxWidth = 560, quality = 0.45) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
@@ -1334,7 +1334,7 @@
             if (rawImgs.length > 0) {
                 imgGrid.innerHTML = rawImgs.map(url => `
                     <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="block aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-100 group">
-                        <img src="${escapeHtml(url)}" alt="Ảnh phòng trọ" class="w-full h-full object-cover group-hover:scale-105 transition">
+                        <img src="${escapeHtml(url)}" alt="Ảnh phòng trọ" onerror="this.closest('a').style.display='none'" class="w-full h-full object-cover group-hover:scale-105 transition">
                     </a>
                 `).join('');
             } else {
@@ -1530,6 +1530,19 @@
         async function submitNewHouse(event) {
             event.preventDefault();
 
+            const btn = document.getElementById('addHouseSubmitBtn');
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang tạo mã QR...';
+
+            const joinedImages = selectedCompressedImages.join('|||');
+            if (joinedImages.length > 45000) {
+                showToast('Tổng dung lượng ảnh vượt giới hạn 1 ô Google Sheet. Vui lòng bớt số lượng ảnh!', 'error');
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
+                return;
+            }
+
             const houseId = 'NT' + String(Date.now()).slice(-5) + Math.floor(10 + Math.random() * 90);
 
             const payload = {
@@ -1550,14 +1563,9 @@
                 phikhac: document.getElementById('newHouseOtherFees').value.trim(),
                 tiencoc: document.getElementById('newHouseDeposit').value.trim(),
                 quydinh: document.getElementById('newHouseRules').value.trim(),
-                hinhanh: selectedCompressedImages.join('|||'),
+                hinhanh: joinedImages,
                 video: document.getElementById('newHouseVideo').value.trim()
             };
-
-            const btn = document.getElementById('addHouseSubmitBtn');
-            const originalHtml = btn.innerHTML;
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang tạo mã QR...';
 
             try {
                 await fetch(SCRIPT_URL, {
